@@ -1,22 +1,20 @@
 import path from "node:path";
+import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
+import { reactRouterHonoServer } from "react-router-hono-server/dev";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    // Cria/serve o servidor Hono (dev + prod) que envolve o handler SSR do RR7.
+    // Deve vir ANTES do reactRouter().
+    reactRouterHonoServer(),
+    reactRouter(),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
-    },
-  },
-  server: {
-    port: 5173,
-    proxy: {
-      "/api": {
-        target: "http://localhost:3001",
-        changeOrigin: true,
-      },
     },
   },
 });

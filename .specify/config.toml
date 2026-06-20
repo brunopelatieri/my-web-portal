@@ -1,5 +1,5 @@
 [project]
-name = "my-web-portal"
+name = "bizu-saas"
 
 [project.branch_naming]
 description = "Single-branch workflow - develop all features on current branch or manually created branch"

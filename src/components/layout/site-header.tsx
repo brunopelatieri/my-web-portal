@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { navItems, siteConfig } from "@/lib/constants/navigation";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { useAuth } from "@/providers/auth-provider";
@@ -28,25 +29,23 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          {isSupabaseConfigured() ? (
-            user ? (
-              <div className="flex items-center gap-3">
-                <span className="hidden text-sm text-muted-foreground sm:inline">
-                  {user.email}
-                </span>
+          <ThemeToggle />
+          {user ? (
+            <div className="flex items-center gap-3">
+              <Link to="/dashboard">
+                <Button size="sm">Dashboard</Button>
+              </Link>
+              {isSupabaseConfigured() && (
                 <Button variant="ghost" size="sm" onClick={() => signOut()}>
                   Sair
                 </Button>
-              </div>
-            ) : (
-              <Link
-                to="/login"
-                className="text-sm font-medium text-primary transition hover:opacity-80"
-              >
-                Entrar
-              </Link>
-            )
-          ) : null}
+              )}
+            </div>
+          ) : (
+            <Link to="/login">
+              <Button size="sm">Entrar</Button>
+            </Link>
+          )}
         </div>
       </div>
     </header>

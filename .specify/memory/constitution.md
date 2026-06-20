@@ -1,4 +1,4 @@
-# My-Web-Portal Constitution
+# Bizu SaaS Constitution
 
 ## Core Principles
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { contactMessageSchema } from "@/lib/schemas/contact";
 
 export function ContactForm() {
   const [pending, setPending] = useState(false);
@@ -16,17 +17,23 @@ export function ContactForm() {
     setError(null);
 
     const formData = new FormData(event.currentTarget);
-    const payload = {
+    const payload = contactMessageSchema.safeParse({
       name: String(formData.get("name") ?? "").trim(),
       email: String(formData.get("email") ?? "").trim(),
       message: String(formData.get("message") ?? "").trim(),
-    };
+    });
+
+    if (!payload.success) {
+      setError(payload.error.issues[0]?.message ?? "Preencha todos os campos.");
+      setPending(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payload.data),
       });
 
       if (!response.ok) {

@@ -5,7 +5,7 @@ ai_assistant: "claude"
 command_prefix: ""
 ---
 
-Start a new feature by creating a specification and feature branch for my-web-portal.
+Start a new feature by creating a specification and feature branch for Bizu SaaS.
 
 This is the first step in the Spec-Driven Development lifecycle.
 

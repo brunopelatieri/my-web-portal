@@ -3,11 +3,11 @@ import type { Project } from "@/types/project";
 export const sampleProjects: Project[] = [
   {
     id: "1",
-    title: "My Web Portal",
+    title: "Bizu SaaS",
     description:
-      "Boilerplate Next.js + Supabase com templates de páginas e formulário de contato.",
-    href: "https://github.com/brunopelatieri/my-web-portal",
-    tags: ["Next.js", "Supabase", "TypeScript"],
+      "Boilerplate full-stack para SaaS com React Router, Hono, Drizzle e Supabase auxiliar.",
+    href: "https://bizu.bru.ia.br",
+    tags: ["React Router", "Hono", "Drizzle", "Supabase"],
   },
   {
     id: "2",

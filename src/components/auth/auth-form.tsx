@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,7 +9,7 @@ import { getSupabase } from "@/lib/supabase/client";
 export function AuthForm() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const nextPath = searchParams.get("next") ?? "/";
+  const nextPath = searchParams.get("next") ?? "/dashboard";
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);

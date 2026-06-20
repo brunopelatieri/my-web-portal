@@ -2,24 +2,46 @@
 description: "Claude Code context file for this project"
 ---
 
-# My-Web-Portal - Claude Context
+# Bizu SaaS - AI Software Engineering Context
 
-## Setup
-Install Claude Code with 'npm install -g @anthropic-ai/claude-code', then run 'claude' (prompts for login on first use)
+Este projeto é um boilerplate full-stack para iniciar rapidamente SaaS, portais,
+sites, blogs, dashboards e sistemas web usando metodologia de **AI Software
+Engineering**: especificação primeiro, contexto vivo para LLMs e decisões
+técnicas documentadas.
 
-## Commands
-claude (interactive REPL), claude "query" (start with prompt), claude -p "query" (SDK query), claude -c (continue conversation), claude update, claude mcp
+## Leia primeiro
 
-## Best Practices
-Use descriptive prompts, break complex tasks into steps, leverage Claude's code analysis capabilities
+Antes de mudanças técnicas relevantes:
 
-## File Imports
-Use `@path/to/file.ext` syntax to import files with relative paths
+- `AI_CONTEXT.md`
+- `PROJECT_TECHNICAL_SPEC.md`
+- `MIGRATION_NOTES.md`
+- `.specify/memory/constitution.md`
+- `.cursor/rules/*.mdc`
 
-## Limitations
-Claude Code works best with well-structured projects, requires clear context, may need multiple iterations for complex tasks
+## Arquitetura atual
+
+- React Router v7 Framework Mode com `ssr: true`.
+- Hono API em `src/api/app.ts`, montado por `src/server.ts`.
+- Processo único em dev/prod (`react-router dev`, `node build/server/index.js`).
+- Drizzle/Postgres como fonte de dados.
+- Supabase apenas auxiliar (Auth, Storage, Functions, Realtime).
+- Dashboard client-only por convenção: sem loaders server-side com dados sensíveis.
+
+## Regra de contexto vivo
+
+Se alterar arquitetura, rotas, stack, deploy, banco, auth, billing, dashboard,
+rules ou SpecifyX, atualize também:
+
+- `AI_CONTEXT.md`
+- `PROJECT_TECHNICAL_SPEC.md`
+- `README.md` se afetar onboarding
+- `.cursor/rules/*.mdc` se afetar decisões futuras de agentes
 
 ## Project Memory
+@AI_CONTEXT.md
+@PROJECT_TECHNICAL_SPEC.md
+@MIGRATION_NOTES.md
 @.specify\memory\constitution.md
 
 ---

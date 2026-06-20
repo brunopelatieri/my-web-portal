@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { getSupabase } from "@/lib/supabase/client";
 
 export function AuthCallbackPage() {
@@ -9,7 +9,7 @@ export function AuthCallbackPage() {
     const supabase = getSupabase();
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      navigate(session ? "/" : "/login", { replace: true });
+      navigate(session ? "/dashboard" : "/login", { replace: true });
     });
   }, [navigate]);
 
