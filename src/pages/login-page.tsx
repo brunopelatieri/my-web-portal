@@ -1,5 +1,6 @@
 import { Link, Navigate } from "react-router";
 import { AuthForm } from "@/components/auth/auth-form";
+import { SiteLogo } from "@/components/layout/site-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
@@ -36,12 +37,9 @@ export function LoginPage() {
       <div className="relative w-full max-w-md">
         {/* Brand */}
         <div className="mb-6 text-center">
-          <Link
-            to="/"
-            className="inline-block text-xl font-bold tracking-wide text-primary transition hover:opacity-80"
-          >
-            Bizu SaaS
-          </Link>
+          <div className="flex justify-center">
+            <SiteLogo size="lg" />
+          </div>
           <p className="mt-1 text-sm text-muted-foreground">
             Acesse seu dashboard de projetos
           </p>

@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
 import { getPostBySlug } from "@/lib/content/posts";
+import { absoluteAsset } from "@/lib/seo";
 import type { Route } from "./+types/blog-post";
 
 export function loader({ params }: Route.LoaderArgs) {
@@ -28,7 +29,9 @@ export const meta: Route.MetaFunction = ({ data }) => {
     { property: "og:description", content: post.excerpt },
     { property: "og:type", content: "article" },
     { property: "article:published_time", content: post.publishedAt },
-    ...(post.cover ? [{ property: "og:image", content: post.cover }] : []),
+    ...(post.cover
+      ? [{ property: "og:image", content: absoluteAsset(post.cover) }]
+      : []),
   ];
 };
 
@@ -64,6 +67,14 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
         >
           {post.date}
         </time>
+
+        {post.cover ? (
+          <img
+            src={post.cover}
+            alt=""
+            className="mb-10 aspect-[16/9] w-full rounded-xl border border-border/60 object-cover"
+          />
+        ) : null}
 
         <div className="prose prose-invert max-w-none text-base leading-relaxed text-muted-foreground">
           <p>{post.content}</p>

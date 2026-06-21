@@ -71,30 +71,39 @@ export function AboutPage() {
       />
 
       <section className="px-6 py-16">
-        <div className="mx-auto max-w-3xl space-y-5 text-muted-foreground">
-          <p>
-            Iniciei minha jornada com PHP e frameworks clássicos como
-            CodeIgniter, Zend Framework e Laravel — construindo uma base sólida
-            em desenvolvimento web e arquitetura de sistemas. Ao longo dos anos,
-            expandi para tecnologias modernas de alto impacto: do backend ao
-            frontend, automação inteligente, engenharia de IA e blockchain.
-          </p>
-          <p>
-            Minha paixão está em criar soluções{" "}
-            <strong className="text-foreground">
-              escaláveis, seguras e inovadoras
-            </strong>
-            . Minha experiência permite migrar sistemas legados para tecnologias
-            modernas, integrar LLMs em produtos existentes e construir do zero
-            arquiteturas orientadas a agentes autônomos.
-          </p>
-          <p>
-            <strong className="text-foreground">Atualmente</strong>, meu foco
-            está em DApps, APIs de alta performance, automação inteligente com
-            n8n e LangChain, construção de agentes de IA com LLMs (Claude, GPT,
-            Gemini, DeepSeek, Grok) e desenvolvimento de servidores MCP para
-            conectar IA a fluxos de negócio reais.
-          </p>
+        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[280px_1fr] md:items-start">
+          <div className="mx-auto w-full max-w-[280px]">
+            <img
+              src={siteConfig.author.photo}
+              alt={siteConfig.author.name}
+              className="aspect-square w-full rounded-2xl border border-border/60 object-cover shadow-lg"
+            />
+          </div>
+          <div className="space-y-5 text-muted-foreground">
+            <p>
+              Iniciei minha jornada com PHP e frameworks clássicos como
+              CodeIgniter, Zend Framework e Laravel — construindo uma base sólida
+              em desenvolvimento web e arquitetura de sistemas. Ao longo dos anos,
+              expandi para tecnologias modernas de alto impacto: do backend ao
+              frontend, automação inteligente, engenharia de IA e blockchain.
+            </p>
+            <p>
+              Minha paixão está em criar soluções{" "}
+              <strong className="text-foreground">
+                escaláveis, seguras e inovadoras
+              </strong>
+              . Minha experiência permite migrar sistemas legados para tecnologias
+              modernas, integrar LLMs em produtos existentes e construir do zero
+              arquiteturas orientadas a agentes autônomos.
+            </p>
+            <p>
+              <strong className="text-foreground">Atualmente</strong>, meu foco
+              está em DApps, APIs de alta performance, automação inteligente com
+              n8n e LangChain, construção de agentes de IA com LLMs (Claude, GPT,
+              Gemini, DeepSeek, Grok) e desenvolvimento de servidores MCP para
+              conectar IA a fluxos de negócio reais.
+            </p>
+          </div>
         </div>
       </section>
 

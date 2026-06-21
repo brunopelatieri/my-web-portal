@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { SiteLogo } from "@/components/layout/site-logo";
 import { navItems, siteConfig, socialLinks } from "@/lib/constants/navigation";
 
 export function SiteFooter() {
@@ -9,10 +10,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <p className="text-base font-semibold text-foreground">
-              {siteConfig.name}
-            </p>
-            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+            <SiteLogo size="md" asLink={false} />
+            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
               {siteConfig.description}
             </p>
           </div>

@@ -16,6 +16,9 @@ import { siteConfig } from "@/lib/constants/navigation";
 import stylesheet from "@/index.css?url";
 
 export const links: LinksFunction = () => [
+  { rel: "icon", href: siteConfig.favicon, type: "image/x-icon" },
+  { rel: "shortcut icon", href: siteConfig.favicon },
+  { rel: "apple-touch-icon", href: siteConfig.logo },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

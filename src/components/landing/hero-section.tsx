@@ -12,13 +12,6 @@ const stackBadges = [
   "Docker",
 ];
 
-const modules = [
-  { name: "Landing + SSR", ready: 100 },
-  { name: "Blog com Open Graph", ready: 100 },
-  { name: "Auth + Dashboard", ready: 90 },
-  { name: "API Hono + Postgres", ready: 95 },
-];
-
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden border-b border-border/50 bg-background">
@@ -83,48 +76,11 @@ export function HeroSection() {
               bizu.bru.ia.br
             </span>
           </div>
-          <div className="grid grid-cols-4 gap-0 p-6">
-            <div className="col-span-1 space-y-2 border-r border-border/40 pr-4">
-              {["Landing", "Blog", "Login", "Dashboard", "API /health"].map(
-                (item, i) => (
-                  <div
-                    key={item}
-                    className={`rounded-md px-3 py-2 text-left text-xs ${i === 0 ? "bg-primary/10 font-medium text-primary" : "text-muted-foreground"}`}
-                  >
-                    {item}
-                  </div>
-                )
-              )}
-            </div>
-            <div className="col-span-3 space-y-4 pl-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-foreground">
-                  Módulos prontos para usar
-                </span>
-                <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs text-primary">
-                  SSR + API + Auth
-                </span>
-              </div>
-              {modules.map((module) => (
-                <div key={module.name} className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-foreground">
-                      {module.name}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      {module.ready}%
-                    </span>
-                  </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full bg-primary transition-all"
-                      style={{ width: `${module.ready}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <img
+            src={siteConfig.screenshot}
+            alt="Preview do Bizu SaaS"
+            className="block w-full object-cover object-top"
+          />
         </div>
       </div>
     </section>

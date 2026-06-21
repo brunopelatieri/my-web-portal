@@ -12,10 +12,13 @@ pages, blogs, dashboards/admin e sistemas web de aplicação sem começar do zer
 **URL:** [https://bizu.bru.ia.br](https://bizu.bru.ia.br)
 
 > **Nota sobre deploy:** este repositório é focado em **VPS + Docker + Node único**
-> (`react-router-hono-server` + Hono + SSR). A demo pública, porém, roda na
-> **Vercel** e exigiu **adaptações de arquitetura** (modelo serverless, não o
-> stack plug-and-play do repo). O caminho natural deste template é **VPS/Docker**;
-> use a demo como referência visual, não como espelho 1:1 do que está no GitHub.
+> (`react-router-hono-server` + Hono + SSR). A demo pública roda na **Vercel** e
+> exigiu **adaptações de arquitetura** (modelo serverless, não o stack
+> plug-and-play deste repo).
+>
+> O caminho natural deste template é **VPS/Docker**. Use a demo como referência
+> visual; para a arquitetura otimizada para Vercel, veja o repositório dedicado:
+> [github.com/brunopelatieri/bizu-saas-vercel](https://github.com/brunopelatieri/bizu-saas-vercel)
 
 ## O Que Vem Pronto
 

@@ -135,7 +135,7 @@ NODE_ENV=production PORT=3000 node build/server/index.js
 
 ## 10. Deploy (VPS + Docker + Portainer)
 
-Demo prevista em **https://bizu.bru.ia.br** (ainda nao publicada).
+Demo em **https://bizu.bru.ia.br** (Vercel). Repositório Vercel: **https://github.com/brunopelatieri/bizu-saas-vercel**. Este repo principal: VPS + Docker + Node único.
 
 ```bash
 docker build -t bizu-saas .

@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Onde faço o deploy?",
     answer:
-      "O caminho natural do template é VPS + Docker + Portainer, com um único processo Node. A demo pública roda na Vercel e exigiu adaptações de arquitetura — use-a como referência visual, não como espelho do repositório.",
+      "Este repositório é focado em VPS + Docker + Node único (react-router-hono-server + Hono + SSR). A demo em bizu.bru.ia.br roda na Vercel; a arquitetura otimizada para esse deploy está em github.com/brunopelatieri/bizu-saas-vercel. Use a demo como referência visual, não como espelho 1:1 deste código.",
   },
   {
     question: "Preciso saber IA para usar?",

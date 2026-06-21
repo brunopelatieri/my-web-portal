@@ -7,6 +7,7 @@ import {
   Settings,
   Users,
 } from "lucide-react";
+import { SiteLogo } from "@/components/layout/site-logo";
 import { siteConfig } from "@/lib/constants/navigation";
 
 const navItems = [
@@ -32,13 +33,14 @@ export function DashboardSidebar({ collapsed = false }: SidebarProps) {
     >
       {/* Logo */}
       <div className="flex h-16 items-center border-b border-border px-4">
-        <span
-          className={`text-sm font-bold tracking-wide text-primary ${collapsed ? "sr-only" : ""}`}
-        >
-          {siteConfig.name}
-        </span>
-        {collapsed && (
-          <span className="mx-auto text-lg font-bold text-primary">M</span>
+        {collapsed ? (
+          <img
+            src={siteConfig.logo}
+            alt={siteConfig.name}
+            className="mx-auto h-7 w-auto object-contain"
+          />
+        ) : (
+          <SiteLogo size="sm" asLink={false} />
         )}
       </div>
 

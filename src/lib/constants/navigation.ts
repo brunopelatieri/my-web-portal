@@ -4,15 +4,20 @@ export const siteConfig = {
     "Boilerplate full-stack para criar SaaS, portais e sistemas web rápido, com metodologia de AI Software Engineering.",
   locale: "pt-BR",
   url: "https://bizu.bru.ia.br",
+  logo: "/bizu_bru_ia.png",
+  favicon: "/favicon.ico",
+  screenshot: "/bizu_bru_ia_screenshot.webp",
   author: {
     name: "Bruno Pelatieri Goulart",
     role: "Enterprise Automation Architect • AI • DevOps • n8n Specialist",
     email: "brunopelatieri@gmail.com",
     phone: "+55 (19) 99249-6598",
+    photo: "/bruno_pelatieri_goulart_bizu_bru_ia.webp",
   },
   links: {
     demo: "https://bizu.bru.ia.br",
     repo: "https://github.com/brunopelatieri/bizu-saas",
+    repoVercel: "https://github.com/brunopelatieri/bizu-saas-vercel",
     github: "https://github.com/brunopelatieri",
     site: "https://brunogoulart.com.br",
     linkedin: "https://www.linkedin.com/in/bruno-pelatieri-goulart/",
@@ -37,6 +42,7 @@ export type NavItem = (typeof navItems)[number];
 export const socialLinks = [
   { label: "GitHub", href: siteConfig.links.github },
   { label: "Repositório", href: siteConfig.links.repo },
+  { label: "Repo Vercel", href: siteConfig.links.repoVercel },
   { label: "LinkedIn", href: siteConfig.links.linkedin },
   { label: "Site", href: siteConfig.links.site },
   { label: "YouTube", href: siteConfig.links.youtube },

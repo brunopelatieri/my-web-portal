@@ -9,6 +9,10 @@ type SeoInput = {
   robots?: string;
 };
 
+export function absoluteAsset(path: string) {
+  return path.startsWith("http") ? path : `${siteConfig.url}${path}`;
+}
+
 export function buildMeta({
   title,
   description,

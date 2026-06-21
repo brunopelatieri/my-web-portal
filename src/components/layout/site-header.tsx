@@ -1,7 +1,8 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { navItems, siteConfig } from "@/lib/constants/navigation";
+import { SiteLogo } from "@/components/layout/site-logo";
+import { navItems } from "@/lib/constants/navigation";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { useAuth } from "@/providers/auth-provider";
 
@@ -11,12 +12,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link
-          to="/"
-          className="text-sm font-semibold tracking-wide text-primary transition hover:opacity-80"
-        >
-          {siteConfig.name}
-        </Link>
+        <SiteLogo size="md" />
         <div className="flex items-center gap-6">
           <nav aria-label="Principal" className="flex items-center gap-6">
             {navItems.map((item) => (

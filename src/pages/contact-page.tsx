@@ -15,6 +15,7 @@ const channels = [
   { label: "LinkedIn", value: "in/bruno-pelatieri-goulart", href: siteConfig.links.linkedin },
   { label: "GitHub", value: "@brunopelatieri", href: siteConfig.links.github },
   { label: "Repositório", value: "brunopelatieri/bizu-saas", href: siteConfig.links.repo },
+  { label: "Repo Vercel", value: "brunopelatieri/bizu-saas-vercel", href: siteConfig.links.repoVercel },
   { label: "YouTube", value: "@devgalactico", href: siteConfig.links.youtube },
   { label: "X", value: "@brunopelatieri", href: siteConfig.links.x },
   { label: "Instagram", value: "@brunopelatieri", href: siteConfig.links.instagram },

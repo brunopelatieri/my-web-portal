@@ -28,6 +28,7 @@ const posts: Post[] = [
     readTime: "5 min",
     date: "12 Jun 2026",
     publishedAt: "2026-06-12",
+    cover: "/bizu_bru_ia_blog1.webp",
     content:
       "A pergunta mais repetida de qualquer freelancer é: \"qual o status do meu projeto?\". " +
       "Quando você centraliza o progresso em um portal, o cliente encontra a resposta sozinho — " +
@@ -43,6 +44,7 @@ const posts: Post[] = [
     readTime: "8 min",
     date: "3 Jun 2026",
     publishedAt: "2026-06-03",
+    cover: "/bizu_bru_ia_blog2.webp",
     content:
       "Precificar por hora penaliza quem é eficiente. Precificar por valor exige clareza sobre o " +
       "resultado que você entrega. Aqui detalhamos um modelo de pacotes em três níveis que " +
@@ -57,6 +59,7 @@ const posts: Post[] = [
     readTime: "6 min",
     date: "28 Mai 2026",
     publishedAt: "2026-05-28",
+    cover: "/bizu_bru_ia_blog3.webp",
     content:
       "Uma boa stack é aquela que some do seu caminho. React Router em Framework Mode entrega SSR " +
       "para SEO, Hono cuida da API, Drizzle tipa o banco de ponta a ponta e o Supabase resolve " +

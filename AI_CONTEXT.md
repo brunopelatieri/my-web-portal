@@ -76,7 +76,9 @@ Se a mudança afetar agentes/LLMs, atualize também `.cursor/rules/`.
 
 ## Status Atual
 
-- Demo prevista em [https://bizu.bru.ia.br](https://bizu.bru.ia.br) (ainda não publicada).
+- Demo em [https://bizu.bru.ia.br](https://bizu.bru.ia.br) — hospedada na **Vercel**.
+- Repositório principal (este): **VPS + Docker + Node único** (`react-router-hono-server` + Hono + SSR).
+- Repositório Vercel (arquitetura otimizada para demo/serverless): [bizu-saas-vercel](https://github.com/brunopelatieri/bizu-saas-vercel).
 - React Router Framework Mode com `ssr: true`.
 - Hono integrado via `react-router-hono-server`.
 - Blog SSR com fonte estática em `src/lib/content/posts.ts`.

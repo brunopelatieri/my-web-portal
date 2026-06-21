@@ -636,9 +636,11 @@ Objetivo:
 
 ### Demo em Producao
 
-- URL prevista: `https://bizu.bru.ia.br`
-- Status: dominio reservado; deploy ainda nao publicado no momento desta spec.
-- Objetivo: hospedar a demo publica do template (landing, blog, login e dashboard).
+- URL: `https://bizu.bru.ia.br`
+- Hospedagem: **Vercel** (demo publica).
+- Repositório Vercel (arquitetura otimizada para serverless): `https://github.com/brunopelatieri/bizu-saas-vercel`
+- Repositório principal (este repo): **VPS + Docker + Node unico** via `react-router-hono-server` + Hono + SSR.
+- Objetivo: demo como referencia visual; codigo de producao self-hosted permanece neste template.
 
 ### Modelo de Deploy
 

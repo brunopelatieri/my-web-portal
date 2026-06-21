@@ -39,13 +39,20 @@ const readyModules = [
 
 const docs = [
   {
-    label: "Repositório no GitHub",
-    description: "Código-fonte completo, pronto para clonar.",
+    label: "Repositório principal (VPS/Docker)",
+    description:
+      "Código focado em Node único: react-router-hono-server + Hono + SSR + Docker.",
     href: siteConfig.links.repo,
   },
   {
-    label: "Demo",
-    description: "Referência visual em https://bizu.bru.ia.br.",
+    label: "Repositório Vercel",
+    description:
+      "Arquitetura otimizada para deploy na Vercel — base da demo em bizu.bru.ia.br.",
+    href: siteConfig.links.repoVercel,
+  },
+  {
+    label: "Demo ao vivo",
+    description: "Referência visual em https://bizu.bru.ia.br (Vercel).",
     href: siteConfig.links.demo,
   },
 ];
@@ -156,11 +163,21 @@ export function ProjectsPage() {
             Repositório e demo
           </h2>
           <p className="mb-8 max-w-2xl text-muted-foreground">
-            O caminho natural do template é VPS + Docker + Portainer. A demo
-            pública roda na Vercel e exigiu adaptações de arquitetura — use-a
-            como referência visual.
+            Este repositório é focado em <strong className="text-foreground">VPS + Docker + Node único</strong>{" "}
+            (react-router-hono-server + Hono + SSR). A demo pública roda na{" "}
+            <strong className="text-foreground">Vercel</strong> — a arquitetura
+            otimizada para esse deploy está no repositório{" "}
+            <a
+              href={siteConfig.links.repoVercel}
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              bizu-saas-vercel
+            </a>
+            .
           </p>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {docs.map((doc) => (
               <Card key={doc.label}>
                 <CardHeader>
