@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { SiteLogo } from "@/components/layout/site-logo";
+import { SocialLink } from "@/components/layout/social-link";
 import { navItems, siteConfig, socialLinks } from "@/lib/constants/navigation";
 
 export function SiteFooter() {
@@ -7,7 +8,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto border-t border-border bg-background">
-      <div className="mx-auto max-w-5xl px-6 py-12">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
         <div className="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <SiteLogo size="md" asLink={false} />
@@ -25,7 +26,7 @@ export function SiteFooter() {
                 <li key={item.href}>
                   <Link
                     to={item.href}
-                    className="text-sm text-muted-foreground transition hover:text-primary"
+                    className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -38,17 +39,14 @@ export function SiteFooter() {
             <p className="mb-3 text-sm font-semibold text-foreground">
               Redes & contato
             </p>
-            <ul className="grid grid-cols-2 gap-2">
+            <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <SocialLink
                     href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm text-muted-foreground transition hover:text-primary"
-                  >
-                    {link.label}
-                  </a>
+                    label={link.label}
+                    platform={link.platform}
+                  />
                 </li>
               ))}
             </ul>

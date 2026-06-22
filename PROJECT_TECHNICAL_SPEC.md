@@ -112,7 +112,7 @@ logada simples, client-side e sem exposicao de dados no SSR.
 | Ferramenta | Uso previsto |
 |------------|--------------|
 | Zustand | Estado global leve; atualmente usado no tema |
-| TanStack Query | Server state, cache, loading/error states |
+| TanStack Query | Server state, cache, loading/error states — `QueryProvider` em `src/root.tsx` |
 | React Hook Form | Formularios performaticos |
 | Zod | Validacao compartilhavel front/back |
 | `@hookform/resolvers` | Integracao React Hook Form + Zod |
@@ -334,6 +334,7 @@ Arquivos:
 - `src/lib/supabase/functions.ts`
 - `src/lib/supabase/realtime.ts`
 - `src/providers/auth-provider.tsx`
+- `src/providers/query-provider.tsx`
 
 Uso permitido:
 
@@ -355,6 +356,11 @@ Autenticacao atual:
 - Usa `supabase.auth.getUser()`.
 - Escuta `onAuthStateChange`.
 - `ProtectedRoute` protege `/dashboard/**` no cliente.
+- `/login`: UI premium dark (Engineering AI Design), Tabs Login/Cadastro.
+- Cadastro exige Nome, E-mail e Telefone Celular (`react-hook-form` + Zod em
+  `src/lib/schemas/auth.ts`); metadados enviados ao Supabase Auth (`full_name`,
+  `phone`).
+- Feedback de sucesso/erro via Sonner.
 
 ---
 
@@ -445,6 +451,17 @@ Observacao:
 - A `BlogSection` da landing e uma vitrine/preview estatica.
 - O blog real com SSR esta em `/blog` e `/blog/:slug`.
 
+Layout publico:
+
+- `src/components/layout/root-layout.tsx` — shell com header, main e footer.
+- `src/components/layout/site-header.tsx` — header sticky responsivo.
+- `src/components/layout/site-nav-links.tsx` — links de `navItems` com `NavLink` ativo;
+  reutilizado no desktop (inline) e no Sheet mobile.
+- Mobile (`<md`): hamburger + Sheet lateral com navegacao e acoes de auth
+  (Entrar ou Dashboard/Sair).
+- Desktop (`≥md`): logo, nav inline, theme toggle e auth como antes.
+- Anti-overflow: `min-w-0`, `overflow-hidden`, `shrink-0`, padding responsivo.
+
 ---
 
 ## 11. Dashboard/Admin
@@ -454,9 +471,12 @@ Arquivos:
 - `src/components/layout/dashboard-layout.tsx`
 - `src/components/layout/dashboard-sidebar.tsx`
 - `src/components/layout/dashboard-topbar.tsx`
+- `src/components/layout/dashboard-nav.tsx`
+- `src/components/layout/dashboard-user-menu.tsx`
 - `src/pages/dashboard-page.tsx`
 - `src/routes/dashboard.tsx`
 - `src/routes/dashboard.coming-soon.tsx`
+- `src/lib/constants/dashboard-nav.ts`
 
 Rotas:
 
@@ -467,13 +487,14 @@ Rotas:
 - `/dashboard/relatorios`
 - `/dashboard/configuracoes`
 
-Estado anterior:
+Estado atual:
 
-- Layout pronto com sidebar e topbar.
+- Layout responsivo inspirado no `shadcn-admin`.
+- Desktop: sidebar lateral fixa e colapsável, avatar/menu do usuário na base.
+- Mobile: topbar fixa + hambúrguer abre `Sheet` com navegação.
 - Dashboard inicial com cards zerados e quick actions.
-- Subrotas estao como "Em breve".
-- Sem `loader` de servidor; dados devem ser buscados no cliente ou via TanStack
-  Query conforme evolucao.
+- Subrotas estão como "Em breve".
+- Sem `loader` de servidor; dados devem ser buscados no cliente via TanStack Query.
 
 ---
 
@@ -497,28 +518,28 @@ Detalhes:
 
 Componentes UI presentes:
 
+- `avatar`
 - `badge`
 - `button`
 - `card`
+- `dialog`
+- `dropdown-menu`
+- `form`
 - `input`
 - `label`
+- `select`
 - `separator`
+- `sheet`
+- `skeleton`
+- `table`
 - `tabs`
 - `textarea`
+- `tooltip`
 - `sonner`
 
 Componentes recomendados para proximas etapas:
 
-- `dialog`
-- `dropdown-menu`
-- `avatar`
-- `sheet`
-- `table`
-- `skeleton`
-- `form`
-- `select`
 - `checkbox`
-- `tooltip`
 - `popover`
 - `command`
 
@@ -885,15 +906,12 @@ Acao recomendada:
 
 ### Curto prazo
 
-- Adicionar shadcn components essenciais: `dialog`, `dropdown-menu`, `sheet`,
-  `table`, `form`, `select`, `skeleton`, `tooltip`, `avatar`.
 - Criar stack Portainer completa para app + Postgres + reverse proxy.
 - Documentar rotina de migrations como job/pipeline separado.
+- Criar API client tipado para Hono ou helpers de fetch padronizados.
 
 ### Medio prazo
 
-- Configurar TanStack Query Provider no `root.tsx`.
-- Criar API client tipado para Hono ou helpers de fetch padronizados.
 - Criar tabela `posts`.
 - Criar modelos `clients`, `projects`, `project_updates`, `files`.
 - Integrar Supabase Storage aos arquivos do dashboard.

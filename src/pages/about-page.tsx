@@ -1,6 +1,8 @@
 import { PageHero } from "@/components/layout/page-hero";
+import { SocialLink } from "@/components/layout/social-link";
+import { SocialIcon } from "@/components/icons/social-icons";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/constants/navigation";
+import { socialLinks, siteConfig } from "@/lib/constants/navigation";
 
 const focusAreas = [
   {
@@ -57,14 +59,23 @@ export function AboutPage() {
         description="Desenvolvedor Full Stack desde 2006. Unindo a robustez de tecnologias consolidadas com a inteligência das ferramentas mais modernas de IA."
         actions={
           <>
-            <a href={siteConfig.links.linkedin} target="_blank" rel="noreferrer">
-              <Button>LinkedIn</Button>
+            <a href={siteConfig.links.linkedin} target="_blank" rel="noreferrer noopener">
+              <Button className="gap-2">
+                <SocialIcon platform="linkedin" />
+                LinkedIn
+              </Button>
             </a>
-            <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
-              <Button variant="outline">GitHub</Button>
+            <a href={siteConfig.links.github} target="_blank" rel="noreferrer noopener">
+              <Button variant="outline" className="gap-2">
+                <SocialIcon platform="github" />
+                GitHub
+              </Button>
             </a>
-            <a href={siteConfig.links.site} target="_blank" rel="noreferrer">
-              <Button variant="outline">Site pessoal</Button>
+            <a href={siteConfig.links.site} target="_blank" rel="noreferrer noopener">
+              <Button variant="outline" className="gap-2">
+                <SocialIcon platform="site" />
+                Site pessoal
+              </Button>
             </a>
           </>
         }
@@ -150,6 +161,29 @@ export function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border/50 bg-muted/30 px-6 py-16">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            Conteúdo técnico
+          </h2>
+          <p className="mb-8 max-w-2xl text-muted-foreground">
+            Repositórios, redes e canais diretos para acompanhar projetos,
+            código aberto e contato profissional.
+          </p>
+          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {socialLinks.map((link) => (
+              <li key={link.label}>
+                <SocialLink
+                  href={link.href}
+                  label={link.label}
+                  platform={link.platform}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

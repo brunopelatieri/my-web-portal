@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/contact/contact-form";
+import { SocialIcon } from "@/components/icons/social-icons";
 import { PageHero } from "@/components/layout/page-hero";
 import {
   Card,
@@ -6,21 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { siteConfig } from "@/lib/constants/navigation";
-
-const channels = [
-  { label: "WhatsApp", value: siteConfig.author.phone, href: siteConfig.links.whatsapp },
-  { label: "E-mail", value: siteConfig.author.email, href: `mailto:${siteConfig.author.email}` },
-  { label: "Site", value: "brunogoulart.com.br", href: siteConfig.links.site },
-  { label: "LinkedIn", value: "in/bruno-pelatieri-goulart", href: siteConfig.links.linkedin },
-  { label: "GitHub", value: "@brunopelatieri", href: siteConfig.links.github },
-  { label: "Repositório", value: "brunopelatieri/bizu-saas", href: siteConfig.links.repo },
-  { label: "Repo Vercel", value: "brunopelatieri/bizu-saas-vercel", href: siteConfig.links.repoVercel },
-  { label: "YouTube", value: "@devgalactico", href: siteConfig.links.youtube },
-  { label: "X", value: "@brunopelatieri", href: siteConfig.links.x },
-  { label: "Instagram", value: "@brunopelatieri", href: siteConfig.links.instagram },
-  { label: "TikTok", value: "@brunopelatieri", href: siteConfig.links.tiktok },
-];
+import {
+  contactChannelValues,
+  contactChannels,
+} from "@/lib/constants/navigation";
+import { cn } from "@/lib/utils";
 
 export function ContactPage() {
   return (
@@ -29,7 +20,7 @@ export function ContactPage() {
         title="Contato"
         description="Vamos conversar sobre seu próximo projeto de SaaS, automação com IA ou arquitetura full-stack."
       />
-      <section className="px-6 py-12">
+      <section className="px-4 py-12 sm:px-6">
         <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <ContactForm />
           <Card>
@@ -38,19 +29,29 @@ export function ContactPage() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-3 text-sm">
-                {channels.map((channel) => (
+                {contactChannels.map((channel) => (
                   <li
                     key={channel.label}
                     className="flex items-center justify-between gap-4"
                   >
-                    <span className="text-muted-foreground">{channel.label}</span>
+                    <span className="flex min-w-0 items-center gap-2 text-muted-foreground">
+                      <SocialIcon
+                        platform={channel.platform}
+                        className="size-4 shrink-0"
+                      />
+                      {channel.label}
+                    </span>
                     <a
                       href={channel.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="truncate font-medium text-primary transition hover:opacity-80"
+                      {...(channel.href.startsWith("mailto:")
+                        ? {}
+                        : { target: "_blank", rel: "noreferrer noopener" })}
+                      className={cn(
+                        "flex min-w-0 items-center gap-2 truncate font-medium text-primary",
+                        "transition-colors duration-200 hover:text-primary/80",
+                      )}
                     >
-                      {channel.value}
+                      {contactChannelValues[channel.label]}
                     </a>
                   </li>
                 ))}

@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { SocialIcon } from "@/components/icons/social-icons";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/constants/navigation";
 
@@ -16,8 +17,9 @@ export function CtaSection() {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href={siteConfig.links.repo} target="_blank" rel="noreferrer">
-              <Button size="lg" className="min-w-48 text-base font-semibold">
+            <a href={siteConfig.links.repo} target="_blank" rel="noreferrer noopener">
+              <Button size="lg" className="min-w-48 gap-2 text-base font-semibold">
+                <SocialIcon platform="github" />
                 Clonar no GitHub
               </Button>
             </a>

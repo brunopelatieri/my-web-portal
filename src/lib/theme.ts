@@ -28,4 +28,4 @@ export function applyTheme(theme: Theme) {
 }
 
 /** Script inline para evitar flash de tema errado antes da hidratação. */
-export const themeInitScript = `(function(){try{var raw=localStorage.getItem("${THEME_STORAGE_KEY}");var theme=raw?JSON.parse(raw).state.theme:"system";var dark=theme==="dark"||(theme==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",dark);}catch(e){}})();`;
+export const themeInitScript = `(function(){try{var raw=localStorage.getItem("${THEME_STORAGE_KEY}");var theme=raw?JSON.parse(raw).state.theme:"dark";var dark=theme==="dark"||(theme==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",dark);}catch(e){document.documentElement.classList.add("dark");}})();`;

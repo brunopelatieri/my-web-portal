@@ -1,37 +1,27 @@
-import { NavLink } from "react-router";
-import {
-  BarChart3,
-  FileStack,
-  FolderKanban,
-  LayoutDashboard,
-  Settings,
-  Users,
-} from "lucide-react";
+import { Link } from "react-router";
 import { SiteLogo } from "@/components/layout/site-logo";
+import { DashboardNav } from "@/components/layout/dashboard-nav";
+import { DashboardUserMenu } from "@/components/layout/dashboard-user-menu";
 import { siteConfig } from "@/lib/constants/navigation";
-
-const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, end: true },
-  { href: "/dashboard/projetos", label: "Projetos", icon: FolderKanban },
-  { href: "/dashboard/clientes", label: "Clientes", icon: Users },
-  { href: "/dashboard/arquivos", label: "Arquivos", icon: FileStack },
-  { href: "/dashboard/relatorios", label: "Relatórios", icon: BarChart3 },
-];
-
-const bottomItems = [
-  { href: "/dashboard/configuracoes", label: "Configurações", icon: Settings },
-];
+import { useAuth } from "@/providers/auth-provider";
+import { cn } from "@/lib/utils";
 
 type SidebarProps = {
   collapsed?: boolean;
+  className?: string;
 };
 
-export function DashboardSidebar({ collapsed = false }: SidebarProps) {
+export function DashboardSidebar({ collapsed = false, className }: SidebarProps) {
+  const { user, signOut } = useAuth();
+
   return (
     <aside
-      className={`flex h-full flex-col border-r border-border bg-card transition-all duration-200 ${collapsed ? "w-16" : "w-60"}`}
+      className={cn(
+        "hidden h-full flex-col border-r border-border bg-card/50 backdrop-blur-sm transition-[width] duration-200 lg:flex",
+        collapsed ? "w-[4.5rem]" : "w-60",
+        className,
+      )}
     >
-      {/* Logo */}
       <div className="flex h-16 items-center border-b border-border px-4">
         {collapsed ? (
           <img
@@ -44,46 +34,51 @@ export function DashboardSidebar({ collapsed = false }: SidebarProps) {
         )}
       </div>
 
-      {/* Main nav */}
-      <nav className="flex-1 space-y-1 overflow-y-auto p-3">
-        {navItems.map(({ href, label, icon: Icon, end }) => (
-          <NavLink
-            key={href}
-            to={href}
-            end={end}
-            className={({ isActive }) =>
-              `flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                isActive
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              }`
-            }
-          >
-            <Icon className="h-4 w-4 shrink-0" />
-            {!collapsed && <span>{label}</span>}
-          </NavLink>
-        ))}
-      </nav>
+      <DashboardNav collapsed={collapsed} />
 
-      {/* Bottom nav */}
-      <div className="space-y-1 border-t border-border p-3">
-        {bottomItems.map(({ href, label, icon: Icon }) => (
-          <NavLink
-            key={href}
-            to={href}
-            className={({ isActive }) =>
-              `flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                isActive
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              }`
-            }
-          >
-            <Icon className="h-4 w-4 shrink-0" />
-            {!collapsed && <span>{label}</span>}
-          </NavLink>
-        ))}
+      <div className="border-t border-border p-3">
+        <DashboardUserMenu
+          user={user}
+          collapsed={collapsed}
+          onSignOut={() => void signOut()}
+        />
       </div>
     </aside>
+  );
+}
+
+export function DashboardMobileNavHeader() {
+  return (
+    <div className="border-b border-border px-4 py-4">
+      <SiteLogo size="sm" asLink={false} />
+    </div>
+  );
+}
+
+export function DashboardMobileNavFooter({
+  onNavigate,
+}: {
+  onNavigate?: () => void;
+}) {
+  const { user, signOut } = useAuth();
+
+  return (
+    <div className="border-t border-border p-4">
+      <DashboardUserMenu
+        user={user}
+        collapsed={false}
+        onSignOut={() => {
+          onNavigate?.();
+          void signOut();
+        }}
+      />
+      <Link
+        to="/"
+        onClick={onNavigate}
+        className="mt-3 block text-center text-xs text-muted-foreground transition hover:text-foreground"
+      >
+        ← Site público
+      </Link>
+    </div>
   );
 }

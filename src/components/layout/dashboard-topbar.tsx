@@ -1,80 +1,85 @@
 import { Link } from "react-router";
-import { LogOut, Menu, PanelLeftClose } from "lucide-react";
+import { Menu, PanelLeftClose } from "lucide-react";
+import { DashboardUserMenu } from "@/components/layout/dashboard-user-menu";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useAuth } from "@/providers/auth-provider";
+import { cn } from "@/lib/utils";
 
 type TopbarProps = {
   sidebarCollapsed: boolean;
   onToggleSidebar: () => void;
+  onOpenMobileNav?: () => void;
   title?: string;
+  className?: string;
 };
 
 export function DashboardTopbar({
   sidebarCollapsed,
   onToggleSidebar,
+  onOpenMobileNav,
   title = "Dashboard",
+  className,
 }: TopbarProps) {
   const { user, signOut } = useAuth();
 
-  const initials = user?.email
-    ? user.email.slice(0, 2).toUpperCase()
-    : "??";
-
   return (
-    <header className="flex h-16 items-center justify-between border-b border-border bg-background px-4">
-      {/* Left: toggle + breadcrumb */}
+    <header
+      className={cn(
+        "flex h-16 shrink-0 items-center justify-between border-b border-border bg-background/80 px-4 backdrop-blur-sm",
+        className,
+      )}
+    >
       <div className="flex items-center gap-3">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onOpenMobileNav}
+          aria-label="Abrir menu"
+          className="h-8 w-8 lg:hidden"
+        >
+          <Menu className="size-4" />
+        </Button>
+
         <Button
           variant="ghost"
           size="icon"
           onClick={onToggleSidebar}
           aria-label={sidebarCollapsed ? "Expandir menu" : "Recolher menu"}
-          className="h-8 w-8"
+          className="hidden h-8 w-8 lg:inline-flex"
         >
           {sidebarCollapsed ? (
-            <Menu className="h-4 w-4" />
+            <Menu className="size-4" />
           ) : (
-            <PanelLeftClose className="h-4 w-4" />
+            <PanelLeftClose className="size-4" />
           )}
         </Button>
-        <span className="text-sm font-medium text-foreground">{title}</span>
+
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium text-foreground">{title}</p>
+          <p className="hidden text-xs text-muted-foreground sm:block">
+            Área autenticada
+          </p>
+        </div>
       </div>
 
-      {/* Right: user + actions */}
-      <div className="flex items-center gap-3">
-        {user?.email && (
-          <span className="hidden text-xs text-muted-foreground sm:block">
-            {user.email}
-          </span>
-        )}
-
-        {/* Avatar */}
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
-          {initials}
-        </div>
-
-        {/* Back to site */}
+      <div className="flex items-center gap-2">
         <Link
           to="/"
-          className="hidden text-xs text-muted-foreground transition hover:text-foreground sm:block"
+          className="hidden text-xs text-muted-foreground transition hover:text-foreground md:block"
         >
-          ← Site público
+          Site público
         </Link>
 
         <ThemeToggle />
 
-        {/* Sign out */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => signOut()}
-          aria-label="Sair"
-          className="h-8 w-8"
-          title="Sair"
-        >
-          <LogOut className="h-4 w-4" />
-        </Button>
+        <div className="hidden lg:block">
+          <DashboardUserMenu
+            user={user}
+            collapsed
+            onSignOut={() => void signOut()}
+          />
+        </div>
       </div>
     </header>
   );

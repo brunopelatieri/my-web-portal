@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/layout/page-hero";
+import { SocialIcon } from "@/components/icons/social-icons";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -43,17 +44,20 @@ const docs = [
     description:
       "Código focado em Node único: react-router-hono-server + Hono + SSR + Docker.",
     href: siteConfig.links.repo,
+    platform: "repo" as const,
   },
   {
     label: "Repositório Vercel",
     description:
       "Arquitetura otimizada para deploy na Vercel — base da demo em bizu.bru.ia.br.",
     href: siteConfig.links.repoVercel,
+    platform: "repo-vercel" as const,
   },
   {
     label: "Demo ao vivo",
     description: "Referência visual em https://bizu.bru.ia.br (Vercel).",
     href: siteConfig.links.demo,
+    platform: "site" as const,
   },
 ];
 
@@ -66,11 +70,17 @@ export function ProjectsPage() {
         description="Boilerplate full-stack para iniciar projetos web rápido, com base robusta, documentação viva e metodologia de AI Software Engineering."
         actions={
           <>
-            <a href={siteConfig.links.repo} target="_blank" rel="noreferrer">
-              <Button>Ver no GitHub</Button>
+            <a href={siteConfig.links.repo} target="_blank" rel="noreferrer noopener">
+              <Button className="gap-2">
+                <SocialIcon platform="github" />
+                Ver no GitHub
+              </Button>
             </a>
-            <a href={siteConfig.links.demo} target="_blank" rel="noreferrer">
-              <Button variant="outline">Abrir demo</Button>
+            <a href={siteConfig.links.demo} target="_blank" rel="noreferrer noopener">
+              <Button variant="outline" className="gap-2">
+                <SocialIcon platform="site" />
+                Abrir demo
+              </Button>
             </a>
           </>
         }
@@ -170,9 +180,10 @@ export function ProjectsPage() {
             <a
               href={siteConfig.links.repoVercel}
               target="_blank"
-              rel="noreferrer"
-              className="text-primary underline-offset-4 hover:underline"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 text-primary underline-offset-4 transition-colors duration-200 hover:text-primary/80 hover:underline"
             >
+              <SocialIcon platform="repo-vercel" className="size-3.5" />
               bizu-saas-vercel
             </a>
             .
@@ -190,10 +201,11 @@ export function ProjectsPage() {
                   <a
                     href={doc.href}
                     target="_blank"
-                    rel="noreferrer"
-                    className="text-sm font-medium text-primary transition hover:opacity-80"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors duration-200 hover:text-primary/80"
                   >
-                    Acessar →
+                    <SocialIcon platform={doc.platform} className="size-4" />
+                    Acessar
                   </a>
                 </CardContent>
               </Card>

@@ -100,7 +100,11 @@ npm run dev
 - React Router Framework Mode com `ssr: true`.
 - Hono integrado via `react-router-hono-server`.
 - Blog SSR com fonte estática em `src/lib/content/posts.ts`.
-- Dashboard inicial protegido no cliente.
+- Dashboard inicial protegido no cliente, com sidebar responsiva (desktop colapsável + Sheet mobile).
+- Header público responsivo (`SiteHeader`): nav inline no desktop (≥md), hamburger + Sheet no mobile.
+- Login/Cadastro premium (`/login`) com Tabs, react-hook-form + Zod e feedback via Sonner.
+- TanStack Query Provider ativo em `src/root.tsx` (`QueryProvider`, instância SSR-safe via `useState`).
+- shadcn/ui expandido: `dialog`, `dropdown-menu`, `sheet`, `table`, `form`, `select`, `skeleton`, `tooltip`, `avatar`.
 - Tema dark/light com Zustand e script anti-flash.
 - Sonner montado globalmente.
 - Dockerfile multi-stage para VPS.
@@ -109,5 +113,4 @@ npm run dev
 
 - Evoluir blog estático para tabela Drizzle quando virar feature real.
 - Criar schemas compartilhados adicionais conforme novos forms/APIs surgirem.
-- Adicionar providers prontos para TanStack Query quando houver server state real.
 - Criar stack Portainer completa para app + Postgres + reverse proxy.

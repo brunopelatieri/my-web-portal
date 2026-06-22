@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SocialIcon } from "@/components/icons/social-icons";
 import { siteConfig } from "@/lib/constants/navigation";
 
 const faqs = [
@@ -84,9 +85,10 @@ export function FaqSection() {
             <a
               href={siteConfig.links.whatsapp}
               target="_blank"
-              rel="noreferrer"
-              className="text-primary underline-offset-4 hover:underline"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 text-primary underline-offset-4 transition-colors duration-200 hover:text-primary/80 hover:underline"
             >
+              <SocialIcon platform="whatsapp" className="size-3.5" />
               Fale com a gente
             </a>
             .

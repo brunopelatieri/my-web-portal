@@ -39,15 +39,62 @@ export const navItems = [
 
 export type NavItem = (typeof navItems)[number];
 
-export const socialLinks = [
-  { label: "GitHub", href: siteConfig.links.github },
-  { label: "Repositório", href: siteConfig.links.repo },
-  { label: "Repo Vercel", href: siteConfig.links.repoVercel },
-  { label: "LinkedIn", href: siteConfig.links.linkedin },
-  { label: "Site", href: siteConfig.links.site },
-  { label: "YouTube", href: siteConfig.links.youtube },
-  { label: "X", href: siteConfig.links.x },
-  { label: "Instagram", href: siteConfig.links.instagram },
-  { label: "TikTok", href: siteConfig.links.tiktok },
-  { label: "WhatsApp", href: siteConfig.links.whatsapp },
-] as const;
+export type SocialPlatform =
+  | "github"
+  | "repo"
+  | "repo-vercel"
+  | "linkedin"
+  | "site"
+  | "youtube"
+  | "x"
+  | "instagram"
+  | "tiktok"
+  | "whatsapp"
+  | "email";
+
+export type SocialLinkItem = {
+  label: string;
+  href: string;
+  platform: SocialPlatform;
+};
+
+export const socialLinks: readonly SocialLinkItem[] = [
+  { label: "GitHub", href: siteConfig.links.github, platform: "github" },
+  { label: "Repositório", href: siteConfig.links.repo, platform: "repo" },
+  { label: "Repo Vercel", href: siteConfig.links.repoVercel, platform: "repo-vercel" },
+  { label: "LinkedIn", href: siteConfig.links.linkedin, platform: "linkedin" },
+  { label: "Site", href: siteConfig.links.site, platform: "site" },
+  { label: "YouTube", href: siteConfig.links.youtube, platform: "youtube" },
+  { label: "X", href: siteConfig.links.x, platform: "x" },
+  { label: "Instagram", href: siteConfig.links.instagram, platform: "instagram" },
+  { label: "TikTok", href: siteConfig.links.tiktok, platform: "tiktok" },
+  { label: "WhatsApp", href: siteConfig.links.whatsapp, platform: "whatsapp" },
+];
+
+export const contactChannels: readonly SocialLinkItem[] = [
+  { label: "WhatsApp", href: siteConfig.links.whatsapp, platform: "whatsapp" },
+  { label: "E-mail", href: `mailto:${siteConfig.author.email}`, platform: "email" },
+  { label: "Site", href: siteConfig.links.site, platform: "site" },
+  { label: "LinkedIn", href: siteConfig.links.linkedin, platform: "linkedin" },
+  { label: "GitHub", href: siteConfig.links.github, platform: "github" },
+  { label: "Repositório", href: siteConfig.links.repo, platform: "repo" },
+  { label: "Repo Vercel", href: siteConfig.links.repoVercel, platform: "repo-vercel" },
+  { label: "YouTube", href: siteConfig.links.youtube, platform: "youtube" },
+  { label: "X", href: siteConfig.links.x, platform: "x" },
+  { label: "Instagram", href: siteConfig.links.instagram, platform: "instagram" },
+  { label: "TikTok", href: siteConfig.links.tiktok, platform: "tiktok" },
+];
+
+export const contactChannelValues: Record<string, string> = {
+  WhatsApp: siteConfig.author.phone,
+  "E-mail": siteConfig.author.email,
+  Site: "brunogoulart.com.br",
+  LinkedIn: "in/bruno-pelatieri-goulart",
+  GitHub: "@brunopelatieri",
+  Repositório: "brunopelatieri/bizu-saas",
+  "Repo Vercel": "brunopelatieri/bizu-saas-vercel",
+  YouTube: "@devgalactico",
+  X: "@brunopelatieri",
+  Instagram: "@brunopelatieri",
+  TikTok: "@brunopelatieri",
+};
